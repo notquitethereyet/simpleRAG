@@ -17,7 +17,7 @@ source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate     # Windows
 pip install -r requirement.txt
 ```
-### Create enviroment Variable in `.env` file
+### Create environment Variable in `.env` file
 ```
 PINECONE_API_KEY=your-pinecone-api-key
 PINECONE_ENVIRONMENT=us-east-1
@@ -42,6 +42,10 @@ MODEL_NAME=multilingual-e5-large
 ├── requirements.txt       # Python dependencies
 └── README.md              # This file
 ```
+
+### Screenshot
+![Screenshot](screenshot.png)
+
 ### Why This?
 
 It’s simple, modular, and helps you play with Pinecone and Groq for RAG tasks. Great for learning or building basic RAG systems. I did this solely to mess around with my friend's resume :D 
