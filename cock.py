@@ -18,7 +18,7 @@ def get_search_query(user_input):
         messages=[
             {
                 "role": "user",
-                "content": f"Use this data and answer the query consiely: {user_input}"
+                "content": f"Use this data and answer the query: {user_input}"
             }
         ],
         model="llama-3.3-70b-versatile"

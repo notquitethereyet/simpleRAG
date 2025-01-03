@@ -24,7 +24,7 @@ def search(query, pc, top_k=5):
     )
 
     if not results.get('matches'):
-        return "No relevant results found."
+        return "I dunno gang, I couldn't find anything."
     return results
 
 

@@ -5,15 +5,6 @@ from search import search
 from cock import get_search_query
 import tkinter as tk
 from tkinter import filedialog
-import time
-import sys
-
-def stream_output(text):
-    for char in text:
-        sys.stdout.write(char)
-        sys.stdout.flush()
-        time.sleep(0.025)  # Adjust the delay as needed
-    print()  # Move to the next line after streaming
 
 def main():
     # Create root window and hide it
@@ -22,6 +13,9 @@ def main():
 
     # Initialize Pinecone
     pc = initialize_pinecone()
+
+    # Ensure the index is created
+    create_index(pc)
 
     while True:
         # Menu options
@@ -41,7 +35,7 @@ def main():
 
             # Check if a file was selected
             if not pdf_path:
-                print("No file selected. Returning to menu...")
+                print("No file selected. Sayonara...")
                 continue
 
             # Preprocess the PDF
@@ -51,13 +45,14 @@ def main():
             # Get embeddings
             embeddings = get_embeddings(sentences)
 
+            print("Processing PDF... Churning text.... Crunching numbers....")
             # Upsert data into Pinecone
             upsert_data(sentences, embeddings, pc)
-            print("PDF processed and embeddings upserted to Pinecone.")
+            print("PDF ingested successfully!")
 
         elif choice == "2":
             # User input for query
-            user_input = input("Enter your query or intent: ").strip()
+            user_input = input("Ask me something: ").strip()
 
             # First perform the search
             results = search(user_input, pc)
@@ -72,11 +67,10 @@ def main():
 
             # Get inferred query with context
             inferred_query = get_search_query(context)
-            print("\nInferred query: ", end="")
-            stream_output(inferred_query)
+            print(f"\nInferred query: {inferred_query}")
 
         elif choice == "3":
-            print("Exiting...")
+            print("Sayonara...")
             break
 
         else:
