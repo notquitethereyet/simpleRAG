@@ -1,0 +1,5 @@
+pinecone[grpc]
+PyPDF2
+sentence-transformers
+tkinter
+groq
